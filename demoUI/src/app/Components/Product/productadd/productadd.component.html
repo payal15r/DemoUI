@@ -1,0 +1,50 @@
+<div class="container my-5">
+    <div class="mb-3"><h4>Add New Product</h4></div>
+    <form #form="ngForm" (ngSubmit)="AddProduct()">
+      <div class="mb-3">
+        <label for="ProductName" class="form-label">Product Name</label>
+        <input type="text" class="form-control" id="ProductName" [(ngModel)]="ProductObj.Name" name="ProductName" [ngModelOptions]="{standalone: true}">
+      </div>
+      <div class="mb-3">
+        <label for="SKU" class="form-label" [(ngModel)]="ProductObj.SKU" name="SKU">{{SKU_lable}}</label>
+        <button type="button" class="btn btn-primary" (click)="GenerateSKU()">Generate SKU</button>
+      </div>
+  
+      <div class="mb-3">
+        <label for="Category" class="form-label">Category</label>
+        <select class="form-control" [(ngModel)]="ProductObj.CategoryId" name="categoryId" required>
+            <option *ngFor="let category of Category" [value]="category.CategoryId">
+              {{ category.CategoryName }}
+            </option>
+          </select>
+      </div>
+      <div class="mb-3">
+        <label for="BasePrice" class="form-label">Base Price</label>
+        <input type="number" class="form-control" id="BasePrice" [(ngModel)]="ProductObj.BasePrice" name="BasePrice">
+      </div>
+      <div class="mb-3">
+        <label for="MRP" class="form-label">MRP</label>
+        <input type="number" class="form-control" id="MRP" [(ngModel)]="ProductObj.MRP" name="MRP">
+      </div>
+      <div class="mb-3">
+        <label for="Description" class="form-label">Description</label>
+        <textarea class="form-control" id="Description" [(ngModel)]="ProductObj.Description" name="Description"></textarea>
+      </div>
+      <div class="mb-3">
+        <label for="Currency" class="form-label">Currency</label>
+        <input type="text" class="form-control" id="Currency" [(ngModel)]="ProductObj.Currency" name="Currency">
+      </div>
+      <!-- <div class="mb-3">
+        <label for="ManufacturedDate" class="form-label">Manufactured Date</label>
+        <input type="date" class="form-control" id="ManufacturedDate" [(ngModel)]="ProductObj.ManufacturedDate" 
+        name="ManufacturedDate">
+      </div> -->
+      <div class="mb-3">
+        <label for="ExpiredDate" class="form-label">Expire Date</label>
+        <input type="date" class="form-control" id="ExpiredDate" [min]="today"
+         [(ngModel)]="ProductObj.ExpireDate" name="ExpiredDate">
+      </div>
+      <button type="submit" class="btn btn-primary" [disabled]="isDisable" >Submit</button>
+    </form>
+  </div>
+  

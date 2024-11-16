@@ -1,0 +1,42 @@
+<div class="container my-5">
+<h1 class="mb-3">Products</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <!-- <td>Id</td> -->
+            <td>Name</td>
+            <td>SKU</td>
+            <td>BasePrice</td>
+            <td>Category</td>
+            <td>Currency</td>
+            <td>Description</td>
+            <td>Expire Date</td>
+            <td>Manufactured Date</td>
+            <td>Action</td>
+        </tr>
+    </thead>
+    <tbody *ngIf="ProductsList.length>0">
+        <tr *ngFor="let product of ProductsList">
+            <!-- <td>{{product.id}}</td> -->
+            <td>{{product.name}}</td>
+            <td>{{product.sku}}</td>
+            <td>{{product.basePrice}}</td>
+            <td>{{product.categoryName}}</td>
+            <td>{{product.currency}}</td>
+            <td>{{product.description}}</td>
+            <td>{{ product.expireDate ? (product.expireDate | date: 'dd/MM/yyyy') : 'dd/mm/yyyy' }}</td>
+            <td>{{ product.manufacturedDate ? (product.manufacturedDate | date: 'dd/MM/yyyy') : 'dd/mm/yyyy' }}</td>
+            <td>
+                <!-- <a [routerLink]="['products','edit',product.id]">Edit</a> -->
+                <button class="btn btn-success" (click)="EditProduct(product)">Edit</button>
+                <button class="btn btn-success" (click)="DeleteProduect(product)">Delete</button>
+            </td>
+        </tr>
+    </tbody>
+    <tbody *ngIf="ProductsList.length==0">
+        <tr>
+            <td colspan="9" style="justify-content: center;"> No Product Found</td>
+        </tr>
+    </tbody>
+</table>
+</div>
